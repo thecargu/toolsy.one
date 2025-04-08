@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toolsy.one - Useful Online Tools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* === Copied CSS Variables from Key Generator for Exact Color Match === */
+        :root {
+            color-scheme: light;
+            --bg-color: #f8f9fa; /* Very light gray */
+            --text-color: #212529; /* Dark Gray */
+            --card-bg: #ffffff; /* White */
+            --border-color: #dee2e6; /* Lighter Gray */
+            --input-bg: #ffffff;
+            --input-border: #ced4da; /* Medium Gray */
+            --accent-color: #4f46e5; /* Indigo */
+            --accent-text-color: #ffffff;
+            --accent-hover-color: #4338ca; /* Darker Indigo */
+            --link-color: var(--accent-color);
+            --code-bg: #e9ecef; /* Light Gray */
+            --code-text: #343a40; /* Darker Gray */
+            --label-color: #495057; /* Medium Dark Gray */
+            --ad-bg: #e9ecef;
+            --ad-text: #6c757d; /* Medium Gray */
+            --error-bg: #f8d7da; /* Light Red */
+            --error-text: #721c24; /* Dark Red */
+            --error-border: #f5c6cb; /* Medium Red */
+            --warning-bg: #fff3cd; /* Light Yellow */
+            --warning-text: #856404; /* Dark Yellow */
+            --warning-border: #ffeeba; /* Medium Yellow */
+            --icon-filter: invert(10%) sepia(10%) saturate(1000%) hue-rotate(190deg) brightness(95%) contrast(90%); /* Dark icon for light mode */
+            --icon-button-bg: transparent;
+            --icon-button-hover-bg: #e9ecef; /* Light Gray */
+            --shadow-color: rgba(0, 0, 0, 0.05);
+            --focus-ring-color: rgba(79, 70, 229, 0.3); /* Indigo focus ring */
+            --button-secondary-bg: #e9ecef;
+            --button-secondary-text: #495057;
+            --button-secondary-hover-bg: #dee2e6;
+        }
+
+        html.dark {
+            color-scheme: dark;
+            --bg-color: #121212; /* Very Dark Gray */
+            --text-color: #e9ecef; /* Light Gray */
+            --card-bg: #1e1e1e; /* Slightly Lighter Dark */
+            --border-color: #343a40; /* Dark Gray */
+            --input-bg: #2a2a2a;
+            --input-border: #495057; /* Medium Dark Gray */
+            --accent-color: #818cf8; /* Light Indigo */
+            --accent-text-color: #1e1e1e; /* Dark text on light accent */
+            --accent-hover-color: #a7a7ff; /* Lighter Indigo */
+            --link-color: var(--accent-color);
+            --code-bg: #2a2a2a;
+            --code-text: #ced4da; /* Lighter Gray */
+            --label-color: #adb5bd; /* Medium Gray */
+            --ad-bg: #2a2a2a;
+            --ad-text: #6c757d;
+            --error-bg: #4a1a20; /* Dark Red */
+            --error-text: #f8d7da; /* Light Red */
+            --error-border: #8a1c24; /* Medium Dark Red */
+            --warning-bg: #4d3803; /* Dark Yellow */
+            --warning-text: #fff3cd; /* Light Yellow */
+            --warning-border: #856404; /* Medium Dark Yellow */
+            --icon-filter: invert(90%) sepia(10%) saturate(100%) hue-rotate(180deg) brightness(100%) contrast(90%); /* Light icon for dark mode */
+            --icon-button-bg: transparent;
+            --icon-button-hover-bg: #343a40; /* Dark Gray */
+            --shadow-color: rgba(255, 255, 255, 0.05);
+            --focus-ring-color: rgba(129, 140, 248, 0.4); /* Light Indigo focus ring */
+            --button-secondary-bg: #343a40;
+            --button-secondary-text: #adb5bd;
+            --button-secondary-hover-bg: #495057;
+        }
+        /* === End Copied Variables === */
+
+        /* Base styles using variables */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        /* Use variable for icon filter */
+        .theme-icon-filter {
+             filter: var(--icon-filter);
+        }
+        .tool-icon {
+             /* Use variable for accent color */
+             color: var(--accent-color);
+             @apply w-10 h-10 mb-3;
+         }
+         /* Ensure focus rings use the variable */
+         *:focus-visible {
+             outline: none;
+             box-shadow: 0 0 0 3px var(--focus-ring-color);
+         }
+         /* Reset button focus specifically if needed */
+         button:focus-visible {
+             box-shadow: 0 0 0 3px var(--focus-ring-color);
+         }
+         #theme-toggle-button:focus-visible {
+             box-shadow: 0 0 0 3px var(--focus-ring-color);
+         }
+
+
+    </style>
+    <script>
+        // Tailwind dark mode setup (still needed for 'dark:' class detection)
+        tailwind.config = {
+          darkMode: 'class',
+          theme: {
+            extend: {
+              // No theme extensions needed here as we use CSS variables
+            }
+          }
+        }
+      </script>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <header class="bg-[var(--card-bg)] shadow-sm sticky top-0 z-50 border-b border-[var(--border-color)] transition-colors duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-[var(--accent-color)]">
+                toolsy.one
+            </a>
+            <button id="theme-toggle-button" type="button" aria-label="Toggle light/dark mode" class="p-2 rounded-md border border-[var(--border-color)] hover:bg-[var(--icon-button-hover-bg)] focus:outline-none transition-colors duration-200">
+                <img id="theme-icon-img" src="" alt="Toggle Theme" class="w-5 h-5 theme-icon-filter">
+            </button>
+        </nav>
+    </header>
+
+    <main class="flex-grow container mx-auto px-6 py-12 md:py-20">
+
+        <section class="text-center mb-16 md:mb-24">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-[var(--text-color)]">
+                Useful Online Tools
+            </h1>
+            <p class="text-lg md:text-xl text-[var(--label-color)] max-w-2xl mx-auto">
+                A collection of simple online utilities designed to help with various tasks. Just helpful tools.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="text-2xl md:text-3xl font-semibold mb-8 text-center text-[var(--text-color)] border-b border-[var(--border-color)] pb-3">Our Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <div class="bg-[var(--card-bg)] rounded-lg shadow-md p-6 border border-[var(--border-color)] flex flex-col transition-shadow duration-200 hover:shadow-lg">
+                    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/key-round.svg" alt="Key Icon" class="tool-icon">
+                    <h3 class="text-xl font-semibold mb-2 text-[var(--text-color)]">SSL Key Pair Generator</h3>
+                    <p class="text-[var(--label-color)] mb-4 text-sm flex-grow">
+                        Generate secure RSA or ECDSA public/private key pairs directly in your browser. Choose formats like PEM, JWK, or DER. All processing is client-side.
+                    </p>
+                    <a href="https://keygen.toolsy.one" target="_blank" rel="noopener noreferrer" class="inline-block mt-auto bg-[var(--accent-color)] hover:bg-[var(--accent-hover-color)] text-[var(--accent-text-color)] font-medium py-2 px-4 rounded-md text-center transition-colors duration-200 text-sm">
+                        Visit Key Generator
+                    </a>
+                </div>
+
+                <div class="bg-[var(--card-bg)] rounded-lg shadow-md p-6 border border-[var(--border-color)] flex flex-col transition-shadow duration-200 hover:shadow-lg">
+                     <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/flame.svg" alt="Flame Icon" class="tool-icon">
+                    <h3 class="text-xl font-semibold mb-2 text-[var(--text-color)]">Candle Wax Calculator</h3>
+                    <p class="text-[var(--label-color)] mb-4 text-sm flex-grow">
+                        Easily calculate the required amounts of wax and fragrance oil for your candle making projects based on container size and desired fragrance load.
+                    </p>
+                    <a href="https://candlecalculator.toolsy.one/" target="_blank" rel="noopener noreferrer" class="inline-block mt-auto bg-[var(--accent-color)] hover:bg-[var(--accent-hover-color)] text-[var(--accent-text-color)] font-medium py-2 px-4 rounded-md text-center transition-colors duration-200 text-sm">
+                        Visit Calculator
+                    </a>
+                </div>
+
+                <div class="bg-[var(--card-bg)] rounded-lg shadow-md p-6 border border-[var(--border-color)] flex flex-col items-center justify-center text-center opacity-70">
+                     <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/plus-circle.svg" alt="Plus Icon" class="tool-icon">
+                    <h3 class="text-xl font-semibold mb-2 text-[var(--text-color)]">More Tools Soon</h3>
+                    <p class="text-[var(--label-color)] text-sm">
+                        Check back later for more useful client-side utilities!
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-16 py-8 border-t border-[var(--border-color)] bg-[var(--code-bg)] transition-colors duration-300">
+        <div class="container mx-auto px-6 text-center text-[var(--label-color)] text-sm">
+             <p>&copy; <span id="year"></span> toolsy.one. Useful online tools.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- DOM Elements ---
+        const themeToggleButton = document.getElementById('theme-toggle-button');
+        const themeIconImg = document.getElementById('theme-icon-img');
+        const yearSpan = document.getElementById('year');
+
+        // --- State Variables ---
+        const sunIconUrl = 'https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/sun.svg';
+        const moonIconUrl = 'https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/moon.svg';
+
+        // --- Light/Dark Mode Logic ---
+        function applyTheme(isDark) {
+             const htmlEl = document.documentElement;
+             if (isDark) {
+                htmlEl.classList.add('dark');
+                themeIconImg.src = moonIconUrl;
+                themeIconImg.alt = "Switch to Light Mode";
+             } else {
+                 htmlEl.classList.remove('dark');
+                 themeIconImg.src = sunIconUrl;
+                 themeIconImg.alt = "Switch to Dark Mode";
+             }
+             themeToggleButton.setAttribute('aria-label', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+        }
+
+        function toggleTheme() {
+            const isCurrentlyDark = document.documentElement.classList.contains('dark');
+            const newIsDark = !isCurrentlyDark;
+            applyTheme(newIsDark);
+            // Save preference
+            try {
+                localStorage.setItem('theme', newIsDark ? 'dark' : 'light');
+            } catch (e) {
+                console.warn("Could not save theme preference to localStorage:", e);
+            }
+        }
+
+        function initializeTheme() {
+            let preferredTheme = 'light'; // Default to light
+             try {
+                const storedTheme = localStorage.getItem('theme');
+                if (storedTheme) {
+                    preferredTheme = storedTheme;
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    preferredTheme = 'dark';
+                }
+            } catch (e) {
+                 console.warn("Could not access localStorage or media query for theme:", e);
+            }
+            // Apply the theme immediately before adding the listener
+            applyTheme(preferredTheme === 'dark');
+            // Add event listener for the button
+            themeToggleButton.addEventListener('click', toggleTheme);
+        }
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set footer year
+            yearSpan.textContent = new Date().getFullYear();
+            // Initialize theme
+            initializeTheme();
+        });
+
+    </script>
+
+</body>
+</html>
