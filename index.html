@@ -7,7 +7,7 @@
     <meta name="description" content="toolsy.one: A collection of simple, useful online tools built for client-side processing and privacy. Includes SSL Key Generator, Candle Wax Calculator, and more.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* === Copied CSS Variables from Key Generator for Exact Color Match === */
@@ -90,7 +90,12 @@
         .theme-icon-filter {
              filter: var(--icon-filter);
         }
-        /* Removed .tool-icon class - styles applied directly */
+        /* Re-added .tool-icon class */
+        .tool-icon {
+             color: var(--accent-color);
+             /* Original size/margin */
+             @apply w-10 h-10 mb-3;
+         }
 
          /* Ensure focus rings use the variable */
          *:focus-visible {
@@ -127,7 +132,7 @@
                 toolsy.one
             </a>
             <button id="theme-toggle-button" type="button" aria-label="Toggle light/dark mode" class="p-2 rounded-md border border-[var(--border-color)] hover:bg-[var(--icon-button-hover-bg)] focus:outline-none transition-colors duration-200">
-                <img id="theme-icon-img" src="" alt="Toggle Theme" class="w-5 h-5 theme-icon-filter" width="20" height="20">
+                <img id="theme-icon-img" src="" alt="Toggle Theme" class="w-5 h-5 theme-icon-filter">
             </button>
         </nav>
     </header>
@@ -147,10 +152,10 @@
             <h2 class="text-2xl md:text-3xl font-semibold mb-8 text-center text-[var(--text-color)] border-b border-[var(--border-color)] pb-3">Our Tools</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                <div class="bg-[var(--card-bg)] rounded-lg shadow-md p-6 border border-[var(--border-color)] flex flex-col items-center transition-shadow duration-200 hover:shadow-lg">
-                    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/key-round.svg" alt="Key Icon" class="w-12 h-12 mb-4 text-[var(--accent-color)]" width="48" height="48">
-                    <h3 class="text-xl font-semibold mb-2 text-[var(--text-color)] text-center">SSL Key Pair Generator</h3>
-                    <p class="text-[var(--label-color)] mb-4 text-sm flex-grow text-center">
+                <div class="bg-[var(--card-bg)] rounded-lg shadow-md p-6 border border-[var(--border-color)] flex flex-col transition-shadow duration-200 hover:shadow-lg">
+                    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/key-round.svg" alt="Key Icon" class="tool-icon">
+                    <h3 class="text-xl font-semibold mb-2 text-[var(--text-color)]">SSL Key Pair Generator</h3>
+                     <p class="text-[var(--label-color)] mb-4 text-sm flex-grow">
                         Generate secure RSA or ECDSA public/private key pairs directly in your browser. Choose formats like PEM, JWK, or DER. All processing is client-side.
                     </p>
                     <a href="https://keygen.toolsy.one" target="_blank" rel="noopener noreferrer" class="inline-block mt-auto bg-[var(--accent-color)] hover:bg-[var(--accent-hover-color)] text-[var(--accent-text-color)] font-medium py-2 px-4 rounded-md text-center transition-colors duration-200 text-sm">
@@ -158,10 +163,10 @@
                     </a>
                 </div>
 
-                <div class="bg-[var(--card-bg)] rounded-lg shadow-md p-6 border border-[var(--border-color)] flex flex-col items-center transition-shadow duration-200 hover:shadow-lg">
-                     <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/flame.svg" alt="Flame Icon" class="w-12 h-12 mb-4 text-[var(--accent-color)]" width="48" height="48">
-                    <h3 class="text-xl font-semibold mb-2 text-[var(--text-color)] text-center">Candle Wax Calculator</h3>
-                    <p class="text-[var(--label-color)] mb-4 text-sm flex-grow text-center">
+                <div class="bg-[var(--card-bg)] rounded-lg shadow-md p-6 border border-[var(--border-color)] flex flex-col transition-shadow duration-200 hover:shadow-lg">
+                     <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/flame.svg" alt="Flame Icon" class="tool-icon">
+                     <h3 class="text-xl font-semibold mb-2 text-[var(--text-color)]">Candle Wax Calculator</h3>
+                     <p class="text-[var(--label-color)] mb-4 text-sm flex-grow">
                         Easily calculate the required amounts of wax and fragrance oil for your candle making projects based on container size and desired fragrance load.
                     </p>
                     <a href="https://candlecalculator.toolsy.one/" target="_blank" rel="noopener noreferrer" class="inline-block mt-auto bg-[var(--accent-color)] hover:bg-[var(--accent-hover-color)] text-[var(--accent-text-color)] font-medium py-2 px-4 rounded-md text-center transition-colors duration-200 text-sm">
@@ -170,7 +175,7 @@
                 </div>
 
                 <div class="bg-[var(--card-bg)] rounded-lg shadow-md p-6 border border-[var(--border-color)] flex flex-col items-center justify-center text-center opacity-70">
-                     <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/plus-circle.svg" alt="Plus Icon" class="w-12 h-12 mb-4 text-[var(--accent-color)]" width="48" height="48">
+                     <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/plus-circle.svg" alt="Plus Icon" class="tool-icon">
                     <h3 class="text-xl font-semibold mb-2 text-[var(--text-color)]">More Tools Soon</h3>
                     <p class="text-[var(--label-color)] text-sm">
                         Check back later for more useful client-side utilities!
